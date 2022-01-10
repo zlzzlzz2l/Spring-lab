@@ -18,4 +18,14 @@ public class UserServiceImpl implements UserService{
     public void register(User user) {
         userDao.insertMember(user);
     }
+
+    @Override
+    public boolean login(String email, String pw) {
+        if(!userDao.selectUserFromIdPw(email, pw).isEmpty()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
