@@ -38,4 +38,19 @@ public class UserController {
         return "redirect:/";
     }
 
+    @GetMapping("/login")
+    public String doLogin(Model model) {
+        model.addAttribute("info", new UserDto());
+        return "users/login";
+    }
+
+    @PostMapping("/login")
+    public String login(@ModelAttribute UserDto userForm) {
+        if (userService.login(userForm.getEmail(), userForm.getPw())) {
+            return "users/loginComplete";
+        } else {
+            return "users/error";
+        }
+    }
+
 }
