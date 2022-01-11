@@ -13,7 +13,7 @@ import static javax.persistence.FetchType.*;
 public class User_Board {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_board_id")
     private Long id;
 
